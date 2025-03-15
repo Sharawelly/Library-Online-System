@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if isAdmin %}
+    <div id="bookDetails">
+        {% if not books %}
+            <div id="empty">
+                <h1 style="margin-top: 300px;">There Is No Books!<a href="{% url 'addBook' %}">Add Book</a></h1>
+            </div>
+        {% else %}
+            {% for book in books %}
+                <div class="book">
+                    <a href="{% url 'editBook' book.id %}"><img src="{{book.image.url}}" alt="{{book.name}}"></a>
+                    <p>Name: {{book.name}}</p>
+                    <p>Book Author: {{book.author}}</p>
+                    <p>Book Category: {{book.category}}</p>
+                    <a href="{% url 'editBook' book.id %}"><button class="editBtn" style="width: 250px;">Edit</button></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% else %}
+    <div id="bookDetails">
+        {% if not books %}
+            <div id="empty">
+                <h1 style="margin-top: 300px;">There Is No Books!</h1>
+            </div>
+        {% else %}
+            {% for book in books %}
+                {% if book.availability %}
+                    <div class="book">
+                {% else %}
+                    <div class="book Red" title="Not Available">
+                {% endif %}
+                    <a href="{% url 'bookDetails' book.id %}"><img src="{{book.image.url}}" alt="{{book.name}}"></a>
+                    <p>Name: {{book.name}}</p>
+                    <p>Book Author: {{book.author}}</p>
+                    <p>Book Category: {{book.category}}</p>
+                    <a href="{% url 'bookDetails' book.id %}"><button class="detailsBtn" style="width: 250px;">Details</button></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endif %}
+
+{% endblock content %}

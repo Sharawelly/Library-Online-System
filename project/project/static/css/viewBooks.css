@@ -1,0 +1,47 @@
+#bookDetails .book .detailsBtn,.borrowBtn, .delBtn, .remove, .editBtn
+{
+    background-color: green;
+    color: white;
+    border-radius: 15px;
+    width: 90px;
+    height: 40px;
+    font-weight: 800;
+    border-color: green;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#bookDetails .book .detailsBtn:hover, .borrowBtn:hover, .delBtn:hover, .remove:hover, .editBtn:hover
+{
+    transition: 0.5s ease-in-out;
+    background-color: white;
+    color: green;
+}
+
+#bookDetails .book .delBtn, .remove
+{
+    background-color: red;
+    border-color: red;
+    color: white;
+}
+
+#bookDetails .book .delBtn:hover, .remove:hover
+{
+    background-color: white;
+    color: red;
+}
+
+#bookDetails .book .editBtn
+{
+    transition: 0.5s ease-in-out;
+    background-color: gray;
+    border-color: gray;
+    color: white;
+}
+
+#bookDetails .book .editBtn:hover
+{
+    transition: 0.5s ease-in-out;
+    background-color: white;
+    color: gray;
+}

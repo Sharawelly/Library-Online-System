@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    /* تنسيق للعنصر الرئيسي */
+#bookDetails {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تنسيق لقسم التفاصيل */
+#bookDetails .details {
+    text-align: center;
+}
+
+/* تنسيق لصورة الكتاب */
+#bookDetails .details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* تنسيق للعناوين */
+#bookDetails .details h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#bookDetails .details h4 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* تنسيق للفقرات */
+#bookDetails .details p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* تنسيق لفئة الكتاب وتاريخ النشر */
+#bookDetails .details p:first-of-type {
+    font-weight: bold;
+}
+
+#bookDetails .details p:nth-of-type(2) {
+    font-weight: bold;
+}
+
+/* تنسيق لوصف الكتاب */
+#bookDetails .details p:last-of-type {
+    font-style: italic;
+    color: #444;
+}
+
+    {% comment %} #bookDetails .details {
+        margin-top: 80px;
+        max-height: 600px;
+        overflow: hidden;
+    }
+    
+    #bookDetails .details img {
+        float: left;
+        position: static;
+        border-radius: 15px;
+        width: 500px;
+        height: 600px;
+        max-width: 500px;
+        margin: 0 20px 0px 30px;
+    }
+    
+    #bookDetails .details h4,
+    #bookDetails .details h2,
+    #bookDetails .details p 
+    {
+        text-align: left;
+        margin-left: 150px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        margin-top: 5px;
+        margin-bottom: 45px;
+        color: black;
+    } {% endcomment %}
+    
+    </style>
+
+<div id="bookDetails">
+    <div class="details">
+        <img src="{{Book.image.url}}" alt="{{Book.name}}">
+        <h2>Title: {{Book.name}}</h2>
+        <h4>Author: {{Book.author}}</h4>
+        <p>Category: {{Book.category}}</p>
+        <p>Publishing Date: {{Book.date}}</p>
+        <p>Description: {{Book.description}}</p>
+    </div>
+</div>
+
+{% endblock content %}

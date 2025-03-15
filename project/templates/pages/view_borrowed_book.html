@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="bookDetails">
+    {% if not books %}
+        <div id="empty">
+            <h1 style="margin-top: 300px;">YOU DON'T HAVE ANY BOOKS</h1>
+        </div>
+    {% else %}
+        {% for book in books %}
+            <div class="book">
+                <a href="{% url 'bookDetails' book.id %}"><img src="{{book.image.url}}" alt="{{book.name}}"></a>
+                <p>Book Name: {{book.name}}</p>
+                <p>Book Author: {{book.author}}</p>
+                <p>Book Category: {{book.category}}</p>
+                <a href="{% url 'bookDetails' book.id %}"><button class="detailsBtn">Details</button></a>
+                <a href="{% url 'unBorrowBook' book.id %}"><button class="delBtn">Return</button></a>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock content %}

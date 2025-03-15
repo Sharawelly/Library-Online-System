@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="content">
+    <div class="ADD_BOOK" style="background-color: gold;">
+        <h1>Add New Book</h1>
+        <img src="https://i.stack.imgur.com/l60Hf.png" alt="Book Cover" id="cover">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{BF}}
+            <label for="bookCover" id="book">Book Cover</label>
+            <button type="submit" id="submit">Add Book</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    let cover = document.getElementById("cover")
+    let newCover = document.getElementById("bookCover")
+
+    newCover.onchange = function() {
+        cover.src = URL.createObjectURL(newCover.files[0]);
+    }
+
+    let bookAdded = document.getElementById('submit')
+
+    bookAdded.onclick = function()
+    {
+        let name = document.getElementById('tit').value;
+        let author = document.getElementById('auth').value;
+        let date = document.getElementById('date').value;
+        let cover = document.getElementById('bookCover').value;
+        let cat = document.getElementById('cat').value;
+        
+        if (name === '' || author === '' || date === '' || cat === '') 
+        {
+            alert('Please Complete The Book Data')
+            return;
+        }
+        if (cover === '')
+        {
+            alert('Please Insert Book Cover')
+        }
+        else
+        {
+            alert('Book Added Successfully')
+        }
+    }
+</script>
+
+{% endblock content %}

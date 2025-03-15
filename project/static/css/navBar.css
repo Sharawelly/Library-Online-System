@@ -1,0 +1,169 @@
+body
+{
+    margin: 0px;
+}
+
+.navigationBar ul
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 50px;
+    text-transform: capitalize;
+    background-color: transparent;
+    box-shadow: 0 0 20px black;
+    backdrop-filter: blur(5px);
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto;
+    padding-left: 15px;
+}
+
+.fa-solid
+{
+    font-size: 16px;
+    color: orangered;
+}
+
+.bx-plus
+{
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.navigationBar li
+{
+    float: left;
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navigationBar a
+{
+    font-size: 0px;
+    cursor: pointer;
+    border-radius: 22px;
+    text-decoration-line: none;
+    color: white;
+    display: block;
+    text-align: center;
+    width: 215px;
+    padding: 17px;
+}
+
+.navigationBar a:hover
+{
+    transition: 1s;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: orangered;
+}
+
+.navigationBar a:hover i
+{
+    transition: 1s;
+    font-weight: 900;
+    color: white;
+}
+
+.navigationBar ul .logOut a:hover
+{
+    background-color: red;
+    color: white;
+    font-weight: 600;
+}
+.navigationBar ul .logOut a:hover i
+{
+    transition: 0.5s;
+    color: white;
+    font-weight: 900;
+}
+
+
+.fa-right-from-bracket
+{
+    color: red;
+}
+
+.navigationBar ul .search .searchBar
+{
+    font-size: 30px;
+    font-family: 500;
+    color: orangered;
+    border-color: orangered;
+    background-color: transparent;
+    height: 50px;
+    width: 300px;
+    border-radius: 15px;
+    border-width: 4px;
+    text-align: center;
+}
+
+.navigationBar ul .search .searchBar::placeholder
+{
+    color: orangered;
+}
+
+.navigationBar ul .search .searchBar:focus
+{
+    transition: 0.5s;
+    border-width: 4px;
+    border-color: orange;
+    outline-style: none;
+}
+
+.navigationBar ul .search .searchBar:focus::placeholder
+{
+    transition: 0.5s;
+    color: orange;
+}
+
+.navigationBar ul li .Search
+{
+    position: relative;
+    background-color: orangered;
+    border-color: orangered;
+    height: 52px;
+    width: 70px;
+    top: -1px;
+    margin-left: -48px;
+    border-radius: 2px 15px 15px 2px;
+}
+
+.navigationBar ul li .searchBar:focus + .Search
+{
+    transition: 0.5s;
+    background-color: orange;
+    outline-style: none;
+    border-color: orange;
+}
+
+.navigationBar ul li .Search:hover
+{
+    transition: 0.5s;
+    background-color: orange;
+    outline-style: none;
+    border-color: orange;
+}
+
+.navigationBar ul li .Search i
+{
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.navigationBar ul .login a:hover
+{
+    transition: 1s;
+    color: white;
+    background-color: gold;
+}
+
+.navigationBar ul .login a:hover i
+{
+    color: white;
+}

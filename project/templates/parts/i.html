@@ -1,0 +1,57 @@
+
+
+<a id="toTop"><i class="fa-solid fa-circle-chevron-up"></i></a>
+
+<style>
+#toTop
+{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#toTop i
+{
+    font-size: 50px;
+}
+
+#toTop i:hover
+{
+    color: rgb(241, 91, 37);
+}
+</style>
+
+<script>
+        let tit = document.title;
+        let btn = document.getElementById('toTop');
+        document.addEventListener('visibilitychange', function() 
+        {
+            if (document.hidden)
+            {
+                document.title = "Why Are You Leaving!☹";
+            }
+            else 
+            {
+                document.title = tit;
+            }
+        });
+
+        window.onscroll = function()
+        {
+            if (window.scrollY >= 500)
+            {
+                btn.style.display = "block";
+            }
+            if (window.scrollY < 500)
+            {
+                btn.style.display = "none";
+            }
+        }
+
+        btn.onclick = function()
+        {
+            window.scrollTo({top: 0, behavior: "smooth"})
+        }
+</script>

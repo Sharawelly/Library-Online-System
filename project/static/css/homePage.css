@@ -1,0 +1,90 @@
+body
+{
+    padding: 0;
+    margin: 0;
+    transition: .5s;
+}
+
+::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: wheat;
+    box-shadow: 0 0 10px #665d5d inset;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: rgb(255 69 0 / 50%);
+    cursor: grab;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: orangered;
+}
+
+#bookDetails
+{
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#bookDetails .book, .bookRed
+{
+    background-color: rgb(244, 238, 231);
+    margin: 10px;
+    margin-top: 80px;
+    width: 320px;
+    height: 560px;
+    max-width: 320px;
+    max-height: 560px;
+    border-radius: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    color: #333;
+}
+
+#bookDetails .book:hover
+{
+    font-weight: 900;
+    transition: 1s ease-in-out;
+    background-color: antiquewhite;
+}
+
+#bookDetails .book:hover img
+{
+    transition: 1s ease-in-out;
+    width: 250px;
+    height: 300px;
+    margin: 40px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#bookDetails .book img {
+    border-radius: 15px;
+    width: 200px;
+    height: 250px;
+    max-width: 250px;
+    margin: 60px;
+    margin-bottom: 10px;
+}
+
+#bookDetails .Red
+{
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#bookDetails .Red:hover
+{
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+

@@ -1,0 +1,142 @@
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<nav class="navigationBar">
+
+    <ul>
+        <li>
+            <a href="{% url 'Home' %}">
+                <i class="fa-solid fa-house"></i>
+                HOME
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'viewBooks' %}">
+                <i class="fa-solid fa-book"></i>
+                BOOKS
+            </a>
+        </li>
+        <li class="search">
+                <form action="{% url  'viewBooks' %}" method="GET">
+                    {% csrf_token %}
+                    <input type="search" placeholder="Search.." name="search" class="searchBar">
+                    <button type="submit" class="Search"><i class="bx bx-search"></i></button>
+                </form>    
+        </li>
+{% if isAdmin %}
+        <li>
+            <a href="{% url 'addBook' %}">
+                <i class="fa-solid fa-plus"></i>
+                ADD
+            </a>
+        </li>
+{% elif not isNotSignedIn %}
+        <li>
+            <a href="{% url 'view_borrowed_book' %}">
+                <i class="fa-solid fa-book"></i>
+                BORROWED
+            </a>    
+        </li>
+{% endif %}
+
+{% if isNotSignedIn %}
+        <li class="login">
+            <a href="{% url 'login' %}">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                LOG In
+            </a>
+        </li>
+{% else %}
+        <li class="logOut">
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                LOG OUT
+            </a>
+        </li>
+{% endif %}
+    </ul>
+</nav>
+
+<script>
+    const Searchinput = document.getElementsByClassName("searchBar");
+    const csrf = document.querySelector("input[name='csrfmiddlewaretoken']").value;
+    console.log(csrf);
+
+    SendSearchData = (book) =>
+    {
+        $.ajax(
+            {
+                method:"POST",
+                url:'search/',
+                data: {
+                    'csrfmiddlewaretoken': csrf,
+                    'book': book,
+                },
+                success: (res) =>
+                {
+                    Data = res.data
+                    const isAdmin = res.isAdmin;
+                    $('#bookDetails').empty();
+                    Data.forEach(book => {
+                        let bookDiv = $('<div>').addClass('book');
+                        const image = $('<img>').attr('src' , book.image).attr('alt', book.title);
+                        const title = $('<h3>').text('Book Name: ' + book.title);
+                        const author = $('<p>').text('Book Author: ' + book.author);
+                        const category = $('<p>').text('Book Category: ' + book.category);
+                        let Btn;
+                        let Btn1;
+                        if(isAdmin)
+                        {
+                            Btn  = $('<a>').text("Edit").attr('href' , `update/${book.id}`).addClass('editBtn').css({
+                                'display' : 'inline-block',
+                                'text-decoration': 'none',
+                                'line-height': '40px',  
+    '                            vertical-align': 'middle'
+                            });
+                            Btn1 = $('<a>').text("Delete").attr('href', `delete/${book.id}`).addClass('delBtn').css({
+                                'display' : 'inline-block',
+                                'text-decoration': 'none',
+                                'line-height': '40px',  
+    '                            vertical-align': 'middle'
+                            });
+                        }
+                        else
+                        {
+                            Btn = $('<a>').text("Details").attr('href' , `bookDetails/${book.id}`).addClass('detailsBtn').css({
+                                'display' : 'inline-block',
+                                'text-decoration': 'none',
+                                'line-height': '40px',  
+    '                            vertical-align': 'middle'
+                            });
+                            Btn1 = $('<a>').text("Borrow").attr('href', `borrow/${book.id}`).addClass('borrowBtn').css({
+                                'display' : 'inline-block',
+                                'text-decoration': 'none',
+                                'line-height': '40px',  
+    '                            vertical-align': 'middle'
+                            });
+                        }
+                        bookDiv.append(image,title, author, category , Btn , Btn1 );
+                        $('#bookDetails').append(bookDiv);
+                    });
+                },
+                error: (err) =>
+                {
+                    console.log(err);
+                }
+            }
+        )
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Save the original books
+        originalBooks = document.getElementById('bookDetails').innerHTML;
+    });
+
+    document.addEventListener("keyup" , function(e){
+        if(e.target.value !== "")
+            SendSearchData(e.target.value);
+        else
+            {
+                document.getElementById("bookDetails").innerHTML = originalBooks;
+            }
+    })
+</script>
